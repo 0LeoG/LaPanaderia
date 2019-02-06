@@ -2,8 +2,7 @@
     display: flex;
     flex-flow: row;
     justify-content: center;
-    align-items: center;
-    width: 100%;
+    margin-top: 5px;
 }
 
 .news-header-background {
@@ -12,4 +11,6 @@
 
 .card {
     background-color: white;
+    height: 50%;
+    width: 80%;
 }
