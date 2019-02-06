@@ -1,0 +1,74 @@
+﻿.navbar li .glyphicon {
+    margin-right: 15px;
+}
+
+/* Highlighting rules for nav menu items */
+.navbar .navbar-nav .active a,
+.navbar .navbar-nav .active a:hover,
+.navbar .navbar-nav .active a:focus {
+    background-image: none;
+    background-color: #4189C7;
+    color: white;
+}
+
+/* On large screens, convert the nav menu to a vertical sidebar */
+.navbar {
+    height: 100%;
+    width: calc(15% - 5px);
+    background-color: #FFE5EE;
+}
+
+.navbar-default {
+    background-color: #FFE5EE;
+    border-color: #FFE5EE;
+    background-image: none;
+    width: calc(15% - 5px);
+
+}
+
+.navbar-brand {
+    height: 100%;
+    /* firefox bug fix */
+    width: 100%;
+}
+
+.navbar-header {
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    border-top: 1px solid #FFE5EE;
+    padding: 0;
+}
+
+.navbar .container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar .container-fluid {
+    margin: 0;
+}
+
+.navbar ul {
+    float: none;
+}
+
+.navbar li {
+    float: none;
+    font-size: 15px;
+    margin: 6px;
+}
+
+.navbar li a {
+    padding: 10px 16px;
+    border-radius: 4px;
+}
+
+.navbar a {
+    /* If a menu item's text is too long, truncate it */
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

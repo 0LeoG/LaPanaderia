@@ -1,0 +1,15 @@
+.card-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.news-header-background {
+    border-radius: 10px;
+}
+
+.card {
+    background-color: white;
+}
