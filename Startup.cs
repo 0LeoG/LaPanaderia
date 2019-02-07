@@ -1,3 +1,5 @@
+using Autofac;
+using la_panaderia.ClientApp.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,9 +12,13 @@ namespace la_panaderia
 {
     public class Startup
     {
+        private readonly PanaderiaConfiguration _configuration = new PanaderiaConfiguration();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Configuration.Bind(_configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -29,6 +35,13 @@ namespace la_panaderia
             });
         }
 
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyModules(typeof(Startup).Assembly);
+            builder.Register((ctx) => _configuration).SingleInstance();
+        }
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
