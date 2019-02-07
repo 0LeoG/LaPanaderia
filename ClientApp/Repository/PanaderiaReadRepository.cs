@@ -6,7 +6,7 @@ namespace la_panaderia.ClientApp.Repository
 {
     public class PanaderiaReadRepository : IPanaderiaReadRepository
     {
-        public async Task<IEnumerable<Order>> GetOrders()
+        public Task<IEnumerable<Order>> GetOrders()
         {
             throw new System.NotImplementedException();
         }

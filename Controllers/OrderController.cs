@@ -9,12 +9,7 @@ namespace la_panaderia.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
-    {
-        private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
+    {     
         [HttpGet("[action]")]
         public IEnumerable<Order> GetOrders()
         {
@@ -27,9 +22,9 @@ namespace la_panaderia.Controllers
         }
 
         [HttpPost("[action]")]
-        public async IEnumerable<Order> SubmitOrder([FromBody] Order order)
+        public IEnumerable<Order> SubmitOrder([FromBody] Order order)
         {
-            
+            return null;
         }       
     }
 }
