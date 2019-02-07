@@ -12,7 +12,6 @@ export class Layout extends Component {
           <Col sm={3}>
             <NavMenu />
           </Col>
-
           <Col sm={9}>{this.props.children}</Col>
         </Row>
       </Grid>
