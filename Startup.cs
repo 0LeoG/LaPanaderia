@@ -1,5 +1,7 @@
 using Autofac;
 using la_panaderia.ClientApp.Configuration;
+using la_panaderia.ClientApp.Connections;
+using la_panaderia.ClientApp.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +35,10 @@ namespace la_panaderia
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddScoped<IPanaderiaConnectionFactory, PanaderiaConnectionFactory>();
+            services.AddScoped<IPanaderiaReadRepository, PanaderiaReadRepository>();
+
         }
 
 

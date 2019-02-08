@@ -4,6 +4,8 @@ import { Layout } from "./components/Layout";
 import { Home } from "./components/Home";
 import { FetchData } from "./components/FetchData";
 import { AddOrder } from "./components/AddOrder";
+import { EditBread } from "./components/EditBread";
+
 
 export default class App extends Component {
   displayName = App.name;

@@ -9,14 +9,10 @@ export class NavMenu extends Component {
 
   render() {
     return (
-      <Navbar fixedTop fluid collapseOnSelect>
-        <Navbar.Header>
+      <Navbar  fluid>
           <Navbar.Brand>
             <img src={require("../Images/La.Panaderia.jpg")} />
           </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
           <Nav>
             <LinkContainer to={"/"} exact>
               <NavItem>
@@ -34,7 +30,6 @@ export class NavMenu extends Component {
               </NavItem>
             </LinkContainer>
           </Nav>
-        </Navbar.Collapse>
       </Navbar>
     );
   }

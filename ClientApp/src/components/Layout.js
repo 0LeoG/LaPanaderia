@@ -7,14 +7,13 @@ export class Layout extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col sm={3}>
-            <NavMenu />
-          </Col>
-          <Col sm={9}>{this.props.children}</Col>
-        </Row>
-      </Grid>
+      <div className="page-wrapper">
+        <NavMenu />
+
+        <div class="">
+          {this.props.children}
+        </div>
+      </div>
     );
   }
 }
