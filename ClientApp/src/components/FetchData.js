@@ -7,12 +7,12 @@ export class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { breads: [], loading: true };
+    this.state = { breads: [] };
 
     fetch("api/SampleData/GetBread")
       .then(response => response.json())
       .then(data => {
-        this.setState({ breads: data, loading: false });
+        this.setState({ breads: data});
       });
   }
 

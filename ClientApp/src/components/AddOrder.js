@@ -1,28 +1,46 @@
 import React, { Component } from "react";
+import "./AddOrder.css";
+import Select from "react-select";
+
 export class AddOrder extends Component {
   displayName = AddOrder.name;
 
   constructor(props) {
     super(props);
-    this.state = { name: "", breads: [{name:"", quantity: 0}], amount: 0 };
+    this.state = {
+      name: "",
+      breads: [],
+      amount: 0,
+      orderBreads: [{ name: "", quantity: 0 }]
+    };
+
+    fetch("api/SampleData/GetBread")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          breads: data
+        });
+      });
   }
 
-  handleBreadChange = idx => event => {
-    const newBread = this.state.breads.map((bread, sidx) =>{
-      if(idx !== sidx) return bread;
-      return{ ...bread, name:event.target.value};
-    })
+  handleBreadSelectChange = idx => event => {
+    const newBread = this.state.orderBreads.map((bread, sidx) => {
+      if (idx !== sidx) return bread;
 
-    this.setState({breads: newBread});
+      console.log(event);
+      return { ...bread, name: event.value };
+    });
+
+    this.setState({ orderBreads: newBread });
   };
 
   handleQuantityChange = idx => event => {
-    const newBread = this.state.breads.map((bread, sidx) => {
+    const newBread = this.state.orderBreads.map((bread, sidx) => {
       if (idx !== sidx) return bread;
       return { ...bread, quantity: event.target.value };
-    })
+    });
 
-    this.setState({ breads: newBread });
+    this.setState({ orderBreads: newBread });
   };
 
   handleAmountChange = event => {
@@ -38,27 +56,26 @@ export class AddOrder extends Component {
   };
 
   handleSubmit = event => {
-    console.log(JSON.stringify(this.state));
-    fetch('api/SampleData/SubmitOrder', {
-      method: 'POST',
+    fetch("api/SampleData/SubmitOrder", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type':  'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(this.state)
-    })
+    });
     alert("Order was saved successfully" + this.state.bread);
   };
 
-  handleBreadButton = event =>{
+  handleBreadButton = event => {
     this.setState({
-      breads: this.state.breads.concat([{name:"", quantity:0}])
+      orderBreads: this.state.orderBreads.concat([{ name: "", quantity: 0 }])
     });
-  }
+  };
 
   render() {
     return (
-      <div>
+      <div className="addOrder">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <h1>Add new order</h1>
@@ -73,43 +90,49 @@ export class AddOrder extends Component {
               />
             </label>
 
-            {this.state.breads.map((bread, idx) => (
-              <div className="bread">
-                <input
-                  type="text"
-                  placeholder="Rebanada..."
-                  value={bread.name}
-                  onChange={this.handleBreadChange(idx)}
-                  id="bread"
-                  className="form-control"
-                />
-
-                <input
-                  type="text"
-                  placeholder="100"
-                  value={bread.quantity}
-                  onChange={this.handleQuantityChange(idx)}
-                  id="quantity"
-                  className="form-control"
-                />
-
+            <div className="breadGroup">
+              <label htmlFor="breadSelect">Bread Type</label>
+              <label htmlFor="quantity">Quantity</label>
+            </div>.
+            
+            {this.state.orderBreads.map((orderedBread, idx) => (
+              <div className="breadGroup">
+                <div className="breadSelect">
+                  <Select
+                    value={orderedBread.Name}
+                    onChange={this.handleBreadSelectChange(idx)}
+                    options={this.state.breads}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="number"
+                    placeholder="100"
+                    value={orderedBread.quantity}
+                    onChange={this.handleQuantityChange(idx)}
+                    id="quantity"
+                    className="form-control"
+                  />
+                </div>
               </div>
             ))}
-
 
             <button
               type="button"
               onClick={this.handleBreadButton}
               className="btn btn-primary"
-            >Add bread</button>
+            >
+              Add bread
+            </button>
 
-            <br></br>
+            <br />
 
             <label htmlFor="amount">
               Amount:
               <input
-                type="text"
+                type="number"
                 value={this.state.amount}
+                placeholder="0.00"
                 className="form-control"
                 id="amount"
                 onChange={this.handleAmountChange}

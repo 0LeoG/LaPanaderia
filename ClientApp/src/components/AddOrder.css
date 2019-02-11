@@ -1,0 +1,23 @@
+.addOrder{
+    display:flex;
+    justify-content: center;    
+    align-items: center;
+    min-width: 50%;
+}
+
+.breadGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.breadSelect{
+    width: 100%;
+}
+
+.form-control{
+    width: 50%;
+    height: 100%;
+}
