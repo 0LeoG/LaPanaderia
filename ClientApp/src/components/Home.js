@@ -9,24 +9,28 @@ export class Home extends Component {
     return (
       <div>
         <div className="card-container">
-          <NewsHeaderCard
-            title="Add order"
-            href="./AddOrder"
-            thumbnail={require("../Images/addCircle.svg")}
-          />{" "}
-          <NewsHeaderCard
-            title="View order history"
-            href="https://github.com/nekonee"
-            thumbnail={require("../Images/La.Panaderia.jpg")}
-          />{" "}
+          <div className="flex-item">
+            <NewsHeaderCard
+              title="Add order"
+              href="./AddOrder"
+              thumbnail={require("../Images/addCircle.svg")}
+            />
+          </div>
+          <div className="flex-item">
+            <NewsHeaderCard
+              title="View order history"
+              href="https://github.com/nekonee"
+              thumbnail={require("../Images/La.Panaderia.jpg")}
+            />
+          </div>
+          <div className="flex-item">
+            <NewsHeaderCard
+              title="Recipes"
+              href="https://github.com/nekonee"
+              thumbnail={require("../Images/La.Panaderia.jpg")}
+            />
+          </div>
         </div>
-        <div className="card-container">
-          <NewsHeaderCard
-            title="Recipes"
-            href="https://github.com/nekonee"
-            thumbnail={require("../Images/La.Panaderia.jpg")}
-          />{" "}
-        </div>{" "}
       </div>
     );
   }

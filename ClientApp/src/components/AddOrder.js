@@ -11,7 +11,7 @@ export class AddOrder extends Component {
       name: "",
       breads: [],
       amount: 0,
-      orderBreads: [{ name: "", quantity: 0 }]
+      orderBreads: [{ name: "", quantity: 0, breadId:0 }]
     };
 
     fetch("api/SampleData/GetBread")
@@ -26,9 +26,7 @@ export class AddOrder extends Component {
   handleBreadSelectChange = idx => event => {
     const newBread = this.state.orderBreads.map((bread, sidx) => {
       if (idx !== sidx) return bread;
-
-      console.log(event);
-      return { ...bread, name: event.value };
+      return { ...bread, name: event.label, breadId: event.value };
     });
 
     this.setState({ orderBreads: newBread });
@@ -64,7 +62,6 @@ export class AddOrder extends Component {
       },
       body: JSON.stringify(this.state)
     });
-    alert("Order was saved successfully" + this.state.bread);
   };
 
   handleBreadButton = event => {
@@ -89,11 +86,15 @@ export class AddOrder extends Component {
                 onChange={this.handleNameChange}
               />
             </label>
+            
+            <br />
+            <br />
 
-            <div className="breadGroup">
+
+            <div className="breadLabelGroup">
               <label htmlFor="breadSelect">Bread Type</label>
               <label htmlFor="quantity">Quantity</label>
-            </div>.
+            </div>
             
             {this.state.orderBreads.map((orderedBread, idx) => (
               <div className="breadGroup">
@@ -125,6 +126,8 @@ export class AddOrder extends Component {
               Add bread
             </button>
 
+
+            <br />
             <br />
 
             <label htmlFor="amount">

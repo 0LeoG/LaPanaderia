@@ -34,9 +34,17 @@ namespace la_panaderia.Controllers
         {
             var bread = await _readRepository.GetBread();
 
-            var breadOptions = bread.Select(x => new BreadOption{Value = x.Name, Label = x.Name});
+            var breadOptions = bread.Select(x => new BreadOption{Value = x.BreadId, Label = x.Name});
 
             return breadOptions;
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<BreadViewModel>> GetBreadForTiles()
+        {
+            var bread = await _readRepository.GetBread();
+
+            return bread;
         }
 
         [HttpPost("[action]")]
@@ -48,7 +56,7 @@ namespace la_panaderia.Controllers
 
         public class BreadOption
         {
-            public string Value { get; set; }
+            public int Value { get; set; }
             public string Label { get; set; }
         }
     }

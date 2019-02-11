@@ -9,7 +9,7 @@ export class FetchData extends Component {
     super(props);
     this.state = { breads: [] };
 
-    fetch("api/SampleData/GetBread")
+    fetch("api/SampleData/GetBreadForTiles")
       .then(response => response.json())
       .then(data => {
         this.setState({ breads: data});
@@ -20,11 +20,13 @@ export class FetchData extends Component {
     return (
       <div className="card-container">
         {this.state.breads.map((bread) => (
+          <div className="flex-item">
             <NewsHeaderCard
               title={bread.name}
               href="./EditBread"
               thumbnail={require("../Images/" + bread.trimmedName + ".jpg")}
             />
+            </div>
         ))}
       </div>
     );

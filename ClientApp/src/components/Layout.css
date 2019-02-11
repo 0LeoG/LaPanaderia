@@ -1,0 +1,10 @@
+.sideBar{
+    background-color: #FFE5EE;
+    height: 100%;
+    background: #FFE5EE;
+}
+
+.flexLayoutContainer{
+    display:flex;
+    justify-content: center;
+}
